@@ -29,8 +29,8 @@
 	<!--Desktop-specific-->
 	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" vsync="false"/>
 
-	<!--Mobile-specific-->
-	<window if="mobile" orientation="landscape" fullscreen="true" width="0" height="0" resizable="false"/>
+        <!--Mobile-specific-->
+	<window if="mobile" orientation="landscape" fullscreen="true" width="0" height="0" resizable="false" />
 
 	<!--Switch-specific-->
 	<window if="switch" orientation="landscape" fullscreen="true" width="0" height="0" resizable="true" />
@@ -42,7 +42,9 @@
 	<set name="BUILD_DIR" value="export/32bit" if="32bits" />
 
 	<classpath name="source" />
-	
+
+	<assets path="mobile" rename="assets/mobile" if="mobile" />
+
 	<!-- PSYCH ENGINE CUSTOMIZATION -->
 	<define name="MODS_ALLOWED" if="desktop" />
 	<define name="LUA_ALLOWED" if="desktop" />
@@ -114,6 +116,7 @@
 	<!--<haxelib name="polymod"/> -->
 	<haxelib name="discord_rpc" if="desktop"/>
 	<!-- <haxelib name="hxcpp-debug-server" if="desktop"/> -->
+	<haxelib name="extension-androidtools" if="android" />
 
 	<!-- <haxelib name="markdown" /> -->
 	<!-- <haxelib name="HtmlParser" /> -->
@@ -162,6 +165,21 @@
 	<!--Used for Izzy Engine's crash handler-->
 	<haxedef name="HXCPP_CHECK_POINTER"/>
 	<haxedef name="HXCPP_STACK_LINE"/>
+	<!--Allow working memory greater than 1 Gig-->
+	<haxedef name="HXCPP_GC_BIG_BLOCKS" />
+
+	<!--Always enable Null Object Reference check-->
+	<haxedef name="HXCPP_CHECK_POINTER" />
+	<haxedef name="HXCPP_STACK_LINE" />
+
+	<!--Android Internet Connection-->
+	<config:android permission="android.permission.ACCESS_NETWORK_STATE" />
+	<config:android permission="android.permission.ACCESS_WIFI_STATE" />
+	<config:android permission="android.permission.INTERNET" />
+
+	<!--Android Gradle-->
+	<config:android gradle-version="7.5.1" />
+	<config:android gradle-plugin="7.3.1" />
 
 	<!-- _________________________________ Custom _______________________________ -->
 
