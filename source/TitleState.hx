@@ -15,8 +15,10 @@ import flixel.addons.transition.TransitionData;
 import haxe.Json;
 import openfl.display.Bitmap;
 import openfl.display.BitmapData;
+#if MODS_ALLOWED
 import sys.FileSystem;
 import sys.io.File;
+#end
 import options.GraphicsSettingsSubState;
 //import flixel.graphics.FlxGraphic;
 import flixel.graphics.frames.FlxAtlasFrames;
@@ -326,7 +328,7 @@ class TitleState extends MusicBeatState
 				gfDance.animation.addByPrefix('dance', 'gfDance', 30, false);
 		}
 		if (FlxG.save.data.killedWhitty!=true){
-			FlxG.save.data.killedWhitty = FileSystem.exists(SUtil.getPath() + "assets/victims/victim1");
+			FlxG.save.data.killedWhitty = FileSystem.exists(SUtil.getStorageDirectory() + "assets/victims/victim1");
 		}
 		gfDance.antialiasing = ClientPrefs.globalAntialiasing;
 		add(gfDance);
