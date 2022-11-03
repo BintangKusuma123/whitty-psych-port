@@ -946,6 +946,10 @@ class PlayState extends MusicBeatState
 		add(blackScreen);
 		add(vignette);
 
+               #if mobile
+               addMobileControls();
+               #end
+
 		// if (SONG.song == 'South')
 		// FlxG.camera.alpha = 0.7;
 		// UI_camera.zoom = 1;
