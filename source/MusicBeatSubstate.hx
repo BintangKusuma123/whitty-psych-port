@@ -18,7 +18,7 @@ import flixel.tweens.FlxTween;
 import flixel.FlxSprite;
 import flixel.util.FlxColor;
 import flixel.util.FlxGradient;
-import flixel.FlxState;
+import flixel.FlxSubState;
 import flixel.FlxBasic;
 
 class MusicBeatSubstate extends FlxSubState
