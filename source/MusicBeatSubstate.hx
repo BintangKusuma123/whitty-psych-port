@@ -82,7 +82,7 @@ class MusicBeatSubstate extends FlxSubState
 	override function destroy()
 	{
 		#if mobile
-		if (trackedinputsVirtualPad != [])
+		if (trackedInputsVirtualPad != [])
 			controls.removeVirtualControlsInput(trackedinputsVirtualPad);
 		#end
 
