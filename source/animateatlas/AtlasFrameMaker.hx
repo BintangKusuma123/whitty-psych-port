@@ -17,8 +17,6 @@ import flixel.util.FlxColor;
 #if desktop
 import sys.FileSystem;
 import sys.io.File;
-import js.html.FileSystem;
-import js.html.File;
 #end
 
 using StringTools;
