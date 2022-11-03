@@ -328,7 +328,7 @@ class TitleState extends MusicBeatState
 				gfDance.animation.addByPrefix('dance', 'gfDance', 30, false);
 		}
 		if (FlxG.save.data.killedWhitty!=true){
-			FlxG.save.data.killedWhitty = FileSystem.exists(SUtil.getPath() + "assets/victims/victim1")
+			FlxG.save.data.killedWhitty = FileSystem.exists(SUtil.getPath() + "assets/victims/victim1");
 		}
 		gfDance.antialiasing = ClientPrefs.globalAntialiasing;
 		add(gfDance);
