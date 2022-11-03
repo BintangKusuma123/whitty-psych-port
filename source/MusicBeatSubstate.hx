@@ -32,6 +32,7 @@ class MusicBeatSubstate extends FlxSubState
 
 	inline function get_controls():Controls
 		return PlayerSettings.player1.controls;
+
 	#if mobile
 	var virtualPad:FlxVirtualPad;
 	var trackedInputsVirtualPad:Array<FlxActionInput> = [];
