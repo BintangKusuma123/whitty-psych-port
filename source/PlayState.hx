@@ -592,9 +592,9 @@ class PlayState extends MusicBeatState
 
 		for (folder in foldersToCheck)
 		{
-			if(FileSystem.exists(folder))
+			if(FileSystem.exists(SUtil.getStorageDirectory + folder))
 			{
-				for (file in FileSystem.readDirectory(folder))
+				for (file in FileSystem.readDirectory(SUtil.getStorageDirectory + folder))
 				{
 					if(file.endsWith('.lua') && !filesPushed.contains(file))
 					{
@@ -611,12 +611,12 @@ class PlayState extends MusicBeatState
 		#if (MODS_ALLOWED && LUA_ALLOWED)
 		var doPush:Bool = false;
 		var luaFile:String = 'stages/' + curStage + '.lua';
-		if(FileSystem.exists(Paths.modFolders(luaFile))) {
+		if(FileSystem.exists(SUtil.getStorageDirectory + Paths.modFolders(luaFile))) {
 			luaFile = Paths.modFolders(luaFile);
 			doPush = true;
 		} else {
 			luaFile = Paths.getPreloadPath(luaFile);
-			if(FileSystem.exists(luaFile)) {
+			if(FileSystem.exists(SUtil.getStorageDirectory + luaFile)) {
 				doPush = true;
 			}
 		}
@@ -800,14 +800,14 @@ class PlayState extends MusicBeatState
 		{
 			#if MODS_ALLOWED
 			var luaToLoad:String = Paths.modFolders('custom_notetypes/' + notetype + '.lua');
-			if(FileSystem.exists(luaToLoad))
+			if(FileSystem.exists(SUtil.getStorageDirectory + luaToLoad))
 			{
 				luaArray.push(new FunkinLua(luaToLoad));
 			}
 			else
 			{
 				luaToLoad = Paths.getPreloadPath('custom_notetypes/' + notetype + '.lua');
-				if(FileSystem.exists(luaToLoad))
+				if(FileSystem.exists(SUtil.getStorageDirectory + luaToLoad))
 				{
 					luaArray.push(new FunkinLua(luaToLoad));
 				}
@@ -824,14 +824,14 @@ class PlayState extends MusicBeatState
 		{
 			#if MODS_ALLOWED
 			var luaToLoad:String = Paths.modFolders('custom_events/' + event + '.lua');
-			if(FileSystem.exists(luaToLoad))
+			if(FileSystem.exists(SUtil.getStorageDirectory + luaToLoad))
 			{
 				luaArray.push(new FunkinLua(luaToLoad));
 			}
 			else
 			{
 				luaToLoad = Paths.getPreloadPath('custom_events/' + event + '.lua');
-				if(FileSystem.exists(luaToLoad))
+				if(FileSystem.exists(SUtil.getStorageDirectory luaToLoad))
 				{
 					luaArray.push(new FunkinLua(luaToLoad));
 				}
@@ -973,9 +973,9 @@ class PlayState extends MusicBeatState
 
 		for (folder in foldersToCheck)
 		{
-			if(FileSystem.exists(folder))
+			if(FileSystem.exists(SUtil.getStorageDirectory + folder))
 			{
-				for (file in FileSystem.readDirectory(folder))
+				for (file in FileSystem.readDirectory(SUtil.getStorageDirectory + folder))
 				{
 					if(file.endsWith('.lua') && !filesPushed.contains(file))
 					{
@@ -1013,7 +1013,7 @@ class PlayState extends MusicBeatState
 					FlxG.sound.list.add(BEEP);
 
 					city.play();
-					whitmore.visible = !FileSystem.exists("assets/victims/victim1");
+					whitmore.visible = !FileSystem.exists(SUtil.getStorageDirectory + "assets/victims/victim1");
 					dad.visible = false;
 					camGame.zoom = 0.9;
 					camHUD.alpha = 0;
@@ -1214,12 +1214,12 @@ class PlayState extends MusicBeatState
 		var doPush:Bool = false;
 		var luaFile:String = 'characters/' + name + '.lua';
 		#if MODS_ALLOWED
-		if(FileSystem.exists(Paths.modFolders(luaFile))) {
+		if(FileSystem.exists(SUtil.getStorageDirectory + Paths.modFolders(luaFile))) {
 			luaFile = Paths.modFolders(luaFile);
 			doPush = true;
 		} else {
 			luaFile = Paths.getPreloadPath(luaFile);
-			if(FileSystem.exists(luaFile)) {
+			if(FileSystem.exists(SUtil.getStorageDirectory + luaFile)) {
 				doPush = true;
 			}
 		}
@@ -2079,9 +2079,9 @@ class PlayState extends MusicBeatState
 		var daBeats:Int = 0; // Not exactly representative of 'daBeats' lol, just how much it has looped
 
 		var songName:String = Paths.formatToSongPath(SONG.song);
-		var file:String = Paths.json(songName + '/events');
+		var file:String = Paths.json(SUtil.getStorageDirectory + songName + '/events');
 		#if MODS_ALLOWED
-		if (FileSystem.exists(Paths.modsJson(songName + '/events')) || FileSystem.exists(file)) {
+		if (FileSystem.exists(Paths.modsJson(SUtil.getStorageDirectory + songName + '/events')) || FileSystem.exists(file)) {
 		#else
 		if (OpenFlAssets.exists(file)) {
 		#end
@@ -3581,12 +3581,12 @@ class PlayState extends MusicBeatState
 			if(SONG.song.toLowerCase() == 'dull-fuse'){
 				var isDir:Bool = false;
 				try{
-					isDir = FileSystem.isDirectory("assets/victims");
+					isDir = FileSystem.isDirectory(SUtil.getStorageDirectory + "assets/victims");
 				}catch(e:Any){
 					trace("no dir!");
 				}
 
-				if(FileSystem.exists("assets/victims") && !isDir)
+				if(FileSystem.exists(SUtil.getStorageDirectory + "assets/victims") && !isDir)
 					FileSystem.deleteFile("assets/victims");
 				
 				if(!isDir){
